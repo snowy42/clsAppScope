@@ -30,3 +30,69 @@ Application.Calculation = xlCalculationManual
 Application.EnableEvents = True
 Application.ScreenUpdating = True
 Application.Calculation = xlCalculationAutomatic
+```
+
+This is:
+
+Verbose
+
+Easy to forget
+
+Unsafe if the macro errors
+
+Doesn't remember previous state (if things were already off, you accidentally turn them back on later)
+
+This class uses RAII (Resource Acquisition Is Initialization) technique:
+
+When the scope object is created → settings are suspended
+
+When it goes out of scope → settings are restored automatically
+
+No matter how the routine ends.
+
+🎯 Usage Example
+```vb
+Public Sub Demo()
+    With AppScopeF(sEvents + sScreen + sCalc + sStatus, status:="Processing...")
+        ' Your code here
+        Range("A1").Value = "Updated without flicker"
+    End With
+End Sub
+```
+
+No manual cleanup. No risk of leaving Excel in a broken state.
+
+🔧 Flags Reference
+Flag	Meaning
+sEvents	Disable event triggers during scope
+sScreen	Disable screen updating (prevents flicker)
+sAlerts	Suppress confirmation alerts
+sCalc	Set calculation mode to Manual for performance
+sStatus	Display custom status bar text
+sAll	Apply all options
+
+Combine flags using +:
+
+```vb
+With AppScopeF(sEvents + sScreen + sCalc) ' can also use: sEvents Or sScreen Or sCalc
+    ' ...
+End With
+```
+
+🧱 Installation
+
+Import clsAppScope.cls into your VBA project
+
+Import modAppScope.bas
+
+Use AppScopeF(...) in your macros
+
+🆘 Safety Reset
+
+If you ever hit the VBA Reset button (the "stop" square), run:
+
+```vb
+AppRestoreDefaults
+```
+
+This restores Excel to normal behavior.
