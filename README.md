@@ -25,6 +25,8 @@ Typical VBA code looks like this:
 ```vb
 Application.ScreenUpdating = False
 Application.EnableEvents = False
+Application.Calculation = xlCalculationManual
 ' ... code ...
 Application.EnableEvents = True
 Application.ScreenUpdating = True
+Application.Calculation = xlCalculationAutomatic
