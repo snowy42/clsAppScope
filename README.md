@@ -33,20 +33,14 @@ Application.Calculation = xlCalculationAutomatic
 ```
 
 This is:
-
-Verbose
-
-Easy to forget
-
-Unsafe if the macro errors
-
-Doesn't remember previous state (if things were already off, you accidentally turn them back on later)
+• Verbose
+• Easy to forget
+• Unsafe if the macro errors
+• Doesn't remember previous state (if things were already off, you accidentally turn them back on later)
 
 This class uses RAII (Resource Acquisition Is Initialization) technique:
-
-When the scope object is created → settings are suspended
-
-When it goes out of scope → settings are restored automatically
+• When the scope object is created → settings are suspended
+• When it goes out of scope → settings are restored automatically
 
 No matter how the routine ends.
 
@@ -63,13 +57,14 @@ End Sub
 No manual cleanup. No risk of leaving Excel in a broken state.
 
 🔧 Flags Reference
-Flag	Meaning
-sEvents	Disable event triggers during scope
-sScreen	Disable screen updating (prevents flicker)
-sAlerts	Suppress confirmation alerts
-sCalc	Set calculation mode to Manual for performance
-sStatus	Display custom status bar text
-sAll	Apply all options
+| Flag     | Meaning                                      |
+|---------|-----------------------------------------------|
+| `sEvents` | Disable event triggers during scope          |
+| `sScreen` | Disable screen updating (prevents flicker)   |
+| `sAlerts` | Suppress confirmation alerts                 |
+| `sCalc`   | Set calculation mode to Manual for performance |
+| `sStatus` | Display custom status bar text               |
+| `sAll`    | Apply all options                            |
 
 Combine flags using +:
 
@@ -80,19 +75,21 @@ End With
 ```
 
 🧱 Installation
-
-Import clsAppScope.cls into your VBA project
-
-Import modAppScope.bas
-
-Use AppScopeF(...) in your macros
+1. Import clsAppScope.cls into your VBA project
+2. Import modAppScope.bas
+3. Use AppScopeF(...) in your macros
 
 🆘 Safety Reset
-
 If you ever hit the VBA Reset button (the "stop" square), run:
-
 ```vb
 AppRestoreDefaults
 ```
-
 This restores Excel to normal behavior.
+
+📄 License
+This project is licensed under the MIT License.
+See the header block in the source files for full license text.
+
+👤 Author
+Matthew Snow / Your VB Tutor
+Excel/VBA + AI Automation Developer + Youtube VBA Tutor (youtube.com/@YourVBTutor)
