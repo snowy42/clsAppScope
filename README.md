@@ -33,13 +33,13 @@ Application.Calculation = xlCalculationAutomatic
 ```
 
 This is:
-• Verbose
-• Easy to forget
-• Unsafe if the macro errors
-• Doesn't remember previous state (if things were already off, you accidentally turn them back on later)
+• Verbose 
+• Easy to forget 
+• Unsafe if the macro errors 
+• Doesn't remember previous state (if things were already off, you accidentally turn them back on later) 
 
-This class uses RAII (Resource Acquisition Is Initialization) technique:
-• When the scope object is created → settings are suspended
+This class uses RAII (Resource Acquisition Is Initialization) technique: 
+• When the scope object is created → settings are suspended 
 • When it goes out of scope → settings are restored automatically
 
 No matter how the routine ends.
