@@ -66,7 +66,7 @@ No manual cleanup. No risk of leaving Excel in a broken state.
 | `sStatus` | Display custom status bar text               |
 | `sAll`    | Apply all options                            |
 
-Combine flags using +:
+Combine flags using '+' or 'Or':
 
 ```vb
 With AppScopeF(sEvents + sScreen + sCalc) ' can also use: sEvents Or sScreen Or sCalc
