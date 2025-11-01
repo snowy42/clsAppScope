@@ -42,9 +42,9 @@ This class uses RAII (Resource Acquisition Is Initialization) technique:
 - When the scope object is created → settings are suspended 
 - When it goes out of scope → settings are restored automatically
 
-No matter how the routine ends.
+---
 
-🎯 Usage Example
+## 🎯 Usage Example
 ```vb
 Public Sub Demo()
     With AppScopeF(sEvents + sScreen + sCalc + sStatus, status:="Processing...")
@@ -53,10 +53,11 @@ Public Sub Demo()
     End With
 End Sub
 ```
-
 No manual cleanup. No risk of leaving Excel in a broken state.
 
-🔧 Flags Reference
+---
+
+## 🔧 Flags Reference
 | Flag     | Meaning                                      |
 |---------|-----------------------------------------------|
 | `sEvents` | Disable event triggers during scope          |
@@ -74,22 +75,30 @@ With AppScopeF(sEvents + sScreen + sCalc) ' can also use: sEvents Or sScreen Or 
 End With
 ```
 
-🧱 Installation
+---
+
+## 🧱 Installation
 1. Import clsAppScope.cls into your VBA project
 2. Import modAppScope.bas
 3. Use AppScopeF(...) in your macros
 
-🆘 Safety Reset
+---
+
+## 🆘 Safety Reset
 If you ever hit the VBA Reset button (the "stop" square), run:
 ```vb
 AppRestoreDefaults
 ```
 This restores Excel to normal behavior.
 
-📄 License
+---
+
+## 📄 License
 This project is licensed under the MIT License.
 See the header block in the source files for full license text.
 
-👤 Author
+---
+
+## 👤 Author
 Matthew Snow / Your VB Tutor
 Excel/VBA + AI Automation Developer + Youtube VBA Tutor (youtube.com/@YourVBTutor)
