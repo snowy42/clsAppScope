@@ -50,7 +50,7 @@ Public Sub Demo()
     With AppScopeF(sEvents + sScreen + sCalc + sStatus, status:="Processing...")
         ' Your code here
         Range("A1").Value = "Updated without flicker"
-    End With
+    End With ' automatically restores the original Events/Screen/Calc/Status state as object terminates
 End Sub
 ```
 No manual cleanup. No risk of leaving Excel in a broken state.
